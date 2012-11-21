@@ -79,6 +79,7 @@ public class PackageResourcesProvider extends ContentProvider {
         filter.addAction(Intent.ACTION_PACKAGE_REPLACED);
         filter.addAction(Intent.ACTION_PACKAGE_REMOVED);
         filter.addCategory(Intent.CATEGORY_THEME_PACKAGE_INSTALLED_STATE_CHANGE);
+        filter.setPriority(-500);
         filter.addDataScheme("package");
         getContext().registerReceiver(mThemePackageReceiver, filter);
 
