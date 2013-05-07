@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Tema-verskaffer</string>
+    <string name="permlab_access_DrmThemeResources">Lees DRM-beskermde tema hulpbronne</string>
+    <string name="permdesc_access_DrmThemeResources">Laat \'n program lees toegang kry tot DRM-beskermde tema hulpbronne van Tema pakkette</string>
+    <string name="permlab_set_theme">Stel globaale toegepaste tema in</string>
+    <string name="permdesc_set_theme">Laat \'n program toe om die globale toestel tema te verander.</string>
+</resources>
