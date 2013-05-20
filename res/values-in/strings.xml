@@ -13,11 +13,12 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
+-->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Pengelola Tema</string>
     <string name="permlab_access_DrmThemeResources">baca sumber daya media dengan proteksi DRM</string>
-    <string name="permdesc_access_DrmThemeResources">Mungkinkanlah aplikasi membaca sumber daya media dengan proteksi DRM dari paket tema</string>
+    <string name="permdesc_access_DrmThemeResources">Mungkinkanlah aplikasi membaca sumber daya media dengan proteksi DRM dari paket tema.</string>
     <string name="permlab_set_theme">setel tema sistem</string>
-    <string name="permdesc_set_theme">Munginkanlah aplikasi mengatur tema aparat Anda</string>
+    <string name="permdesc_set_theme" product="tablet">Munginkanlah aplikasi mengatur tema tablet Anda.</string>
+    <string name="permdesc_set_theme" product="default">Munginkanlah aplikasi mengatur tema ponsel Anda.</string>
 </resources>

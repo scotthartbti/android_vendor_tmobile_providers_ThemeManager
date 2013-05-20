@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Πάροχος θεμάτων</string>
     <string name="permlab_access_DrmThemeResources">ανάγνωση προστατευμένων πολυμέσων με DRM</string>
-    <string name="permdesc_access_DrmThemeResources">Επιτρέπει σε μια εφαρμογή την ανάγνωση προστατευμένων πολυμέσων με DRM των Πακέτων Θέματος</string>
+    <string name="permdesc_access_DrmThemeResources">Επιτρέπει σε μια εφαρμογή την ανάγνωση προστατευμένων πολυμέσων με DRM των Πακέτων Θέματος.</string>
     <string name="permlab_set_theme">αλλαγή θέματος συσκευής</string>
     <string name="permdesc_set_theme">Επιτρέπει σε μια εφαρμογή την αλλαγή του θέματος της συσκευής σας.</string>
 </resources>

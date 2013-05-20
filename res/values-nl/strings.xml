@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2010 T-Mobile USA, Inc.
-     Copyright (C) 2012 The CyanogenMod Project
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Provider thema\'s</string>
     <string name="permlab_access_DrmThemeResources">DRM-beschermde mediabestanden lezen</string>
     <string name="permdesc_access_DrmThemeResources">Hiermee kan de app DRM-beschermde mediabestanden lezen van themapakketten.</string>
     <string name="permlab_set_theme">Systeemthema instellen</string>
-    <string name="permdesc_set_theme">Hiermee kan de app het thema van uw apparaat wijzigen.</string>
+    <string name="permdesc_set_theme" product="tablet">Hiermee kan de app het thema van uw tablet wijzigen.</string>
+    <string name="permdesc_set_theme" product="default">Hiermee kan de app het thema van uw apparaat wijzigen.</string>
 </resources>

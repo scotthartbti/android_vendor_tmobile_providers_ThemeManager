@@ -19,5 +19,6 @@
     <string name="permlab_access_DrmThemeResources">чтение DRM-защищённых медиа-ресурсов</string>
     <string name="permdesc_access_DrmThemeResources">Разрешает приложению выполнять чтение DRM-защищённых медиа-ресурсов пакетов тем.</string>
     <string name="permlab_set_theme">установка темы оформления</string>
-    <string name="permdesc_set_theme">Разрешает приложению менять визуальную тему вашего устройства.</string>
+    <string name="permdesc_set_theme" product="tablet">Разрешает приложению менять визуальную тему вашего планшетного ПК.</string>
+    <string name="permdesc_set_theme" product="default">Разрешает приложению менять визуальную тему вашего телефона.</string>
 </resources>
