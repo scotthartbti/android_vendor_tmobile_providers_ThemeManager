@@ -20,5 +20,5 @@
     <string name="permdesc_access_DrmThemeResources">Hiermee kan de app DRM-beschermde mediabestanden lezen van themapakketten.</string>
     <string name="permlab_set_theme">Systeemthema instellen</string>
     <string name="permdesc_set_theme" product="tablet">Hiermee kan de app het thema van uw tablet wijzigen.</string>
-    <string name="permdesc_set_theme" product="default">Hiermee kan de app het thema van uw apparaat wijzigen.</string>
+    <string name="permdesc_set_theme" product="default">Hiermee kan de app het thema van uw telefoon wijzigen.</string>
 </resources>
