@@ -16,8 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Poskytovatel témat</string>
-    <string name="permlab_access_DrmThemeResources">Čtení prostředků témat chráněných DRM</string>
+    <string name="permlab_access_DrmThemeResources">čtení prostředků témat chráněných DRM</string>
     <string name="permdesc_access_DrmThemeResources">Umožní číst soubory balíčků témat chráněných DRM.</string>
-    <string name="permlab_set_theme">Aplikovat téma</string>
-    <string name="permdesc_set_theme">Umožní změnit vzhled prostředí.</string>
+    <string name="permlab_set_theme">aplikovat téma</string>
+    <string name="permdesc_set_theme" product="tablet">Umožní změnit vzhled prostředí tabletu.</string>
+    <string name="permdesc_set_theme" product="default">Umožní změnit vzhled prostředí telefonu.</string>
 </resources>
