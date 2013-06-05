@@ -19,6 +19,6 @@
     <string name="permlab_access_DrmThemeResources">DRM-védett média erőforrások olvasása</string>
     <string name="permdesc_access_DrmThemeResources">Lehetővé teszi az alkalmazás számára, hogy olvasási hozzáférést kapjon a DRM-védett média erőforrásokhoz (Téma csomagok).</string>
     <string name="permlab_set_theme">Globálisan alkalmazott téma beállítása</string>
-    <string name="permdesc_set_theme" product="tablet">Lehet?vé teszi az alkalmazás számára, hogy megváltoztassa a táblagép kinézetét.</string>
+    <string name="permdesc_set_theme" product="tablet">Lehetővé teszi az alkalmazás számára, hogy megváltoztassa a táblagép kinézetét.</string>
     <string name="permdesc_set_theme" product="default">Lehetővé teszi az alkalmazás számára, hogy megváltoztassa a telefon kinézetét.</string>
 </resources>
