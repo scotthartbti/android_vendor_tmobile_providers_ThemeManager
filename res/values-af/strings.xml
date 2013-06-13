@@ -19,5 +19,7 @@
     <string name="permlab_access_DrmThemeResources">Lees DRM-beskermde tema hulpbronne</string>
     <string name="permdesc_access_DrmThemeResources">Laat \'n program lees toegang kry tot DRM-beskermde tema hulpbronne van Tema pakkette.</string>
     <string name="permlab_set_theme">Stel globaale toegepaste tema in</string>
-    <string name="permdesc_set_theme">Laat \'n program toe om die globale toestel tema te verander.</string>
+    <string name="permdesc_set_theme" product="tablet">Laat \'n program toe om die globale tablet tema te verander.</string>
+    <string name="permdesc_set_theme" product="default">Laat \'n program toe om die globale telefoon tema te verander.</string>
+
 </resources>
