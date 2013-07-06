@@ -19,5 +19,6 @@
     <string name="permlab_access_DrmThemeResources">ler recursos de mídia protegidos por direitos digitais</string>
     <string name="permdesc_access_DrmThemeResources">Permite uma aplicação ter acesso aos recursos de mídia dos Pacotes de Temas protegidos por direitos digitais.</string>
     <string name="permlab_set_theme">Definir tema aplicado globalmente</string>
-    <string name="permdesc_set_theme">Permite uma aplicação à trocar o tema visual do seu telefone.</string>
+    <string name="permdesc_set_theme" product="tablet">Permite uma aplicação à trocar o tema visual do seu tablet.</string>
+    <string name="permdesc_set_theme" product="default">Permite uma aplicação à trocar o tema visual do seu telefone.</string>
 </resources>
