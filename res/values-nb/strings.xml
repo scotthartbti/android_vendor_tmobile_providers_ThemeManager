@@ -19,5 +19,6 @@
     <string name="permlab_access_DrmThemeResources">les DRM-beskyttede ressurser</string>
     <string name="permdesc_access_DrmThemeResources">Lar appen få tilgang til DRM-beskyttet materiale i de forskjellige temaene.</string>
     <string name="permlab_set_theme">angi globalt tema</string>
-    <string name="permdesc_set_theme">Lar appen få tilgang til telefonens tema.</string>
+    <string name="permdesc_set_theme" product="tablet">Lar appen få tilgang til nettbrettets tema.</string>
+    <string name="permdesc_set_theme" product="default">Lar appen få tilgang til telefonens tema.</string>
 </resources>
