@@ -19,5 +19,6 @@
     <string name="permlab_access_DrmThemeResources">Læs DRM-beskyttede medieressourcer</string>
     <string name="permdesc_access_DrmThemeResources">Tillader en app læseadgang til DRM-beskyttede medieressourcer i temapakker.</string>
     <string name="permlab_set_theme">Sæt globalt anvendt tema</string>
-    <string name="permdesc_set_theme">Tillader en app at ændre din telefons visuelle tema.</string>
+    <string name="permdesc_set_theme" product="tablet">Tillader app\'en at ændre din tablets visuelle tema.</string>
+    <string name="permdesc_set_theme" product="default">Tillader app\'en at ændre din telefons visuelle tema.</string>
 </resources>
