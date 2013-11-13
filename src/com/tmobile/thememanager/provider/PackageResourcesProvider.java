@@ -45,6 +45,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -140,9 +141,11 @@ public class PackageResourcesProvider extends ContentProvider {
     private synchronized void deleteResourcesForTheme(String packageName) {
         // When a theme package is uninstalled, remove all cached
         // resource packages with the theme's package name.
-        for (PackageKey key : mResourcesTable.keySet()) {
-            if (packageName.equals(key.packageName)) {
-                mResourcesTable.remove(key);
+        Iterator<Map.Entry<PackageKey, SoftReference<Resources>>> iter = mResourcesTable.entrySet().iterator();
+
+        while (iter.hasNext()) {
+            if (iter.next().getKey().packageName.equals(packageName)) {
+                iter.remove();
             }
         }
     }
