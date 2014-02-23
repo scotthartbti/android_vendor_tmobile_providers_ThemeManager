@@ -15,10 +15,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Proveedor de temas</string>
-  <string name="permlab_access_DrmThemeResources">leer los recursos multimedia con protección DRM</string>
-  <string name="permdesc_access_DrmThemeResources">Permitir que la aplicación lea los recursos multimedia de los paquetes de temas con protección DRM.</string>
-  <string name="permlab_set_theme">aplicar temas globalmente</string>
-  <string name="permdesc_set_theme" product="tablet">Permitir que la aplicación cambie el aspecto visual del tablet.</string>
-  <string name="permdesc_set_theme" product="default">Permitir que la aplicación cambie el aspecto visual del teléfono.</string>
+    <string name="app_name">Proveedor de temas</string>
+    <string name="permlab_access_DrmThemeResources">leer los recursos multimedia con protección DRM</string>
+    <string name="permdesc_access_DrmThemeResources">Permitir que la aplicación lea los recursos multimedia de los paquetes de temas con protección DRM.</string>
+    <string name="permlab_set_theme">aplicar temas globalmente</string>
+    <string name="permdesc_set_theme" product="tablet">Permitir que la aplicación cambie el aspecto visual del tablet.</string>
+    <string name="permdesc_set_theme" product="default">Permitir que la aplicación cambie el aspecto visual del teléfono.</string>
 </resources>
