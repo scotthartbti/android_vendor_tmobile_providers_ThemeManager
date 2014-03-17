@@ -34,7 +34,7 @@ import android.content.UriMatcher;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.ThemeInfo;
+import android.content.pm.LegacyThemeInfo;
 import android.content.res.CustomTheme;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
@@ -288,8 +288,7 @@ public class ThemesProvider extends ContentProvider {
             }
 
             /* List all currently installed theme packages. */
-            List<PackageInfo> themePackages = getContext().getPackageManager()
-                    .getInstalledThemePackages();
+            List<PackageInfo> themePackages = ThemeUtilities.getInstalledThemePackages(getContext());
 
             /*
              * Get a sorted cursor of all currently known themes. We'll walk
@@ -311,7 +310,7 @@ public class ThemesProvider extends ContentProvider {
 
             try {
                 for (PackageInfo pi: themePackages) {
-                    if (pi.themeInfos == null) {
+                    if (pi.legacyThemeInfos == null) {
                         continue;
                     }
 
@@ -320,7 +319,7 @@ public class ThemesProvider extends ContentProvider {
                      * along to efficiently detect differences. This method
                      * handles insert, delete, and modify returning with
                      * `current' positioned ahead of the theme matching the last
-                     * of `pi's ThemeInfo objects (or passed the last
+                     * of `pi's LegacyThemeInfo objects (or passed the last
                      * entry if the cursor is exhausted).
                      */
                     boolean invalidated = detectPackageChange(getContext(), mDb, pi, current,
@@ -355,16 +354,16 @@ public class ThemesProvider extends ContentProvider {
             PackageInfo pi, Cursor current, ThemeItem currentItem, CustomTheme appliedTheme) {
         boolean notifyChanges = false;
 
-        if (pi.themeInfos == null)
+        if (pi.legacyThemeInfos == null)
             return false;
 
-        Arrays.sort(pi.themeInfos, new Comparator<ThemeInfo>() {
-            public int compare(ThemeInfo a, ThemeInfo b) {
+        Arrays.sort(pi.legacyThemeInfos, new Comparator<LegacyThemeInfo>() {
+            public int compare(LegacyThemeInfo a, LegacyThemeInfo b) {
                 return a.themeId.compareTo(b.themeId);
             }
         });
 
-        for (ThemeInfo ti: pi.themeInfos) {
+        for (LegacyThemeInfo ti: pi.legacyThemeInfos) {
             String currPackageName = null;
             String currThemeId = null;
 
@@ -426,7 +425,7 @@ public class ThemesProvider extends ContentProvider {
         return notifyChanges;
     }
 
-    private static boolean hasHostDensity(Context context, PackageInfo pi, ThemeInfo ti) {
+    private static boolean hasHostDensity(Context context, PackageInfo pi, LegacyThemeInfo ti) {
         try {
             Resources res = context.createPackageContext(pi.packageName, 0).getResources();
 
@@ -450,11 +449,8 @@ public class ThemesProvider extends ContentProvider {
         }
     }
 
-    private static boolean hasThemePackageScope(Context context, PackageInfo pi, ThemeInfo ti) {
+    private static boolean hasThemePackageScope(Context context, PackageInfo pi, LegacyThemeInfo ti) {
         if ((ti.previewResourceId >>> 24) == 0x0a) {
-            return true;
-        }
-        if ((ti.styleResourceId >>> 24) == 0x0a) {
             return true;
         }
         if ((ti.wallpaperResourceId >>> 24) == 0x0a) {
@@ -467,15 +463,14 @@ public class ThemesProvider extends ContentProvider {
     }
 
     private static void populateContentValues(Context context, ContentValues outValues,
-            PackageInfo pi, ThemeInfo ti, boolean isCurrentTheme) {
+            PackageInfo pi, LegacyThemeInfo ti, boolean isCurrentTheme) {
         outValues.put(ThemeColumns.IS_APPLIED, isCurrentTheme ? 1 : 0);
         outValues.put(ThemeColumns.THEME_ID, ti.themeId);
         outValues.put(ThemeColumns.THEME_PACKAGE, pi.packageName);
         outValues.put(ThemeColumns.NAME, ti.name);
-        outValues.put(ThemeColumns.STYLE_NAME,
-                ti.themeStyleName != null ? ti.themeStyleName : ti.name);
+        outValues.put(ThemeColumns.STYLE_NAME, ti.name);
         outValues.put(ThemeColumns.AUTHOR, ti.author);
-        outValues.put(ThemeColumns.IS_DRM, ti.isDrmProtected ? 1 : 0);
+        outValues.put(ThemeColumns.IS_DRM, 0);
         outValues.put(ThemeColumns.IS_SYSTEM,
                 ((pi.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) ? 1 : 0);
         outValues.put(ThemeColumns.HAS_HOST_DENSITY, hasHostDensity(context, pi, ti) ? 1 : 0);
@@ -486,20 +481,6 @@ public class ThemesProvider extends ContentProvider {
             outValues.put(ThemeColumns.WALLPAPER_URI,
                     PackageResources.makeResourceIdUri(pi.packageName, ti.wallpaperResourceId)
                         .toString());
-        }
-        if (ti.ringtoneFileName != null) {
-            outValues.put(ThemeColumns.RINGTONE_NAME, ti.ringtoneName);
-            outValues.put(ThemeColumns.RINGTONE_NAME_KEY, Audio.keyFor(ti.ringtoneName));
-            outValues.put(ThemeColumns.RINGTONE_URI,
-                    PackageResources.makeAssetPathUri(pi.packageName, ti.ringtoneFileName)
-                        .toString());
-        }
-        if (ti.notificationRingtoneFileName != null) {
-            outValues.put(ThemeColumns.NOTIFICATION_RINGTONE_NAME, ti.notificationRingtoneName);
-            outValues.put(ThemeColumns.NOTIFICATION_RINGTONE_NAME_KEY, Audio.keyFor(ti.notificationRingtoneName));
-            outValues.put(ThemeColumns.NOTIFICATION_RINGTONE_URI,
-                    PackageResources.makeAssetPathUri(pi.packageName,
-                            ti.notificationRingtoneFileName).toString());
         }
         if (ti.thumbnailResourceId != 0) {
             outValues.put(ThemeColumns.THUMBNAIL_URI,
@@ -545,7 +526,7 @@ public class ThemesProvider extends ContentProvider {
     }
 
     private static void insertTheme(Context context, SQLiteDatabase db,
-            PackageInfo pi, ThemeInfo ti, boolean isCurrentTheme) {
+            PackageInfo pi, LegacyThemeInfo ti, boolean isCurrentTheme) {
         if (Constants.DEBUG) {
             Log.i(Constants.TAG, "ThemesProvider out of sync: inserting " +
                     pi.packageName + "/" + ti.themeId);
@@ -557,7 +538,7 @@ public class ThemesProvider extends ContentProvider {
     }
 
     private static boolean verifyOrUpdateTheme(Context context, SQLiteDatabase db,
-            PackageInfo pi, ThemeInfo ti, ThemeItem existing, boolean isCurrentTheme) {
+            PackageInfo pi, LegacyThemeInfo ti, ThemeItem existing, boolean isCurrentTheme) {
         boolean invalidated = false;
 
         /*
@@ -647,8 +628,8 @@ public class ThemesProvider extends ContentProvider {
                         Log.i(Constants.TAG, "Handling new theme package: " + pkg);
                     }
                     PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
-                    if (pi != null && pi.themeInfos != null) {
-                        for (ThemeInfo ti: pi.themeInfos) {
+                    if (pi != null && pi.legacyThemeInfos != null) {
+                        for (LegacyThemeInfo ti: pi.legacyThemeInfos) {
                             insertTheme(context, db, pi, ti, false);
                         }
                     }
