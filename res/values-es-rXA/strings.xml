@@ -17,10 +17,10 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Poskytovateľ tém</string>
-  <string name="permlab_access_DrmThemeResources">čítať prostriedky médií chránené pomocou DRM</string>
-  <string name="permdesc_access_DrmThemeResources">Povolí aplikácii čítať súbory balíčkov tém chránených pomocou DRM.</string>
-  <string name="permlab_set_theme">Nastaviť globálnu tému</string>
-  <string name="permdesc_set_theme" product="tablet">Povolí aplikácii zmeniť vizuálnu tému Vášho tabletu.</string>
-  <string name="permdesc_set_theme" product="default">Povolí aplikácii zmeniť vizuálnu tému Vášho telefónu.</string>
+  <string name="app_name">Fornidor de temes</string>
+  <string name="permlab_access_DrmThemeResources">lleer los recursos multimedia con proteición DRM</string>
+  <string name="permdesc_access_DrmThemeResources">Permitir que l\'aplicación llea los recursos multimedia de los paquetes de temes con proteición DRM.</string>
+  <string name="permlab_set_theme">Afitar un tema global</string>
+  <string name="permdesc_set_theme" product="tablet">Permitir que l\'aplicación camude l\'aspeutu visual de la tablet.</string>
+  <string name="permdesc_set_theme" product="default">Permitir que l\'aplicación camude l\'aspeutu visual del teléfonu.</string>
 </resources>
