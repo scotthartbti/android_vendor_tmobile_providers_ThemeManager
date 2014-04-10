@@ -17,7 +17,7 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Proveidor de temes</string>
+  <string name="app_name">Proveïdor de temes</string>
   <string name="permlab_access_DrmThemeResources">Recursos multimèdia amb lectura protegida per DRM</string>
   <string name="permdesc_access_DrmThemeResources">Permet a l\'app llegir recursos multimèdia de paquets de temes amb lectura protegida per DRM.</string>
   <string name="permlab_set_theme">Estableix un tema global</string>

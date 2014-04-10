@@ -17,10 +17,10 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Provedor de Temas</string>
-  <string name="permlab_access_DrmThemeResources">Ler recursos de mídia protegidos por DRM</string>
-  <string name="permdesc_access_DrmThemeResources">Permite que o aplicativo leia recursos de mídia protegidos por DRM de pacotes temáticos.</string>
-  <string name="permlab_set_theme">Definir tema global</string>
-  <string name="permdesc_set_theme" product="tablet">Permite que o aplicativo alterar o tema visual do seu tablet.</string>
-  <string name="permdesc_set_theme" product="default">Permite que o aplicativo alterar o tema visual do seu telegone.</string>
+  <string name="app_name">Tema sağlayıcısı</string>
+  <string name="permlab_access_DrmThemeResources">DRM korumalı ortam kaynaklarını oku</string>
+  <string name="permdesc_access_DrmThemeResources">Uygulamanın tema paketlerini DRM korumalı kaynaklardan okumasına izin verir.</string>
+  <string name="permlab_set_theme">Genel tema ayarla</string>
+  <string name="permdesc_set_theme" product="tablet">Uygulamaların tabletinizin görüntü temasını değiştirmesine izin ver.</string>
+  <string name="permdesc_set_theme" product="default">Uygulamaların telefonunuzun görüntü temasını değiştirmesine izin ver.</string>
 </resources>
