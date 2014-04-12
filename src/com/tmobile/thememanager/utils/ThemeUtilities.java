@@ -16,7 +16,6 @@
 
 package com.tmobile.thememanager.utils;
 
-import android.content.pm.PackageManager;
 import com.tmobile.thememanager.Constants;
 import com.tmobile.themes.ThemeManager;
 import com.tmobile.themes.provider.ThemeItem;
@@ -28,16 +27,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.LegacyThemeInfo;
+import android.content.pm.ThemeInfo;
 import android.content.res.Configuration;
 import android.content.res.CustomTheme;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class ThemeUtilities {
 
@@ -78,7 +73,7 @@ public class ThemeUtilities {
      * caller to override certain components of a theme with user-supplied
      * values.
      */
-    public static void applyTheme(final Context context, ThemeItem theme, Intent request) {
+    public static void applyTheme(Context context, ThemeItem theme, Intent request) {
         String themeType = request.getType();
         boolean extendedThemeChange =
             request.getBooleanExtra(ThemeManager.EXTRA_EXTENDED_THEME_CHANGE, false);
@@ -154,20 +149,19 @@ public class ThemeUtilities {
         applyStyleInternal(context, theme);
 
         /* Broadcast theme change. */
-        final Intent intent = new Intent(ThemeManager.ACTION_THEME_CHANGED)
-                .setDataAndType(theme.getUri(context), themeType);
-        context.sendBroadcast(intent);
+        context.sendBroadcast(new Intent(ThemeManager.ACTION_THEME_CHANGED)
+                .setDataAndType(theme.getUri(context), themeType));
     }
 
     public static void updateConfiguration(Context context, CustomTheme theme) {
-        updateConfiguration(context, theme.getThemePackageName(), theme.getThemePackageName());
+        updateConfiguration(context, theme.getThemePackageName(), theme.getThemeId());
     }
 
     public static void updateConfiguration(Context context, ThemeItem theme) {
-        updateConfiguration(context, theme.getPackageName(), theme.getPackageName());
+        updateConfiguration(context, theme.getPackageName(), theme.getThemeId());
     }
 
-    public static void updateConfiguration(Context context, PackageInfo pi, LegacyThemeInfo ti) {
+    public static void updateConfiguration(Context context, PackageInfo pi, ThemeInfo ti) {
         updateConfiguration(context, pi.packageName, ti.themeId);
     }
 
@@ -175,18 +169,17 @@ public class ThemeUtilities {
         ActivityManager am = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
         Configuration currentConfig = am.getConfiguration();
 
-        currentConfig.customTheme = new CustomTheme(packageName, packageName, packageName);
+        currentConfig.customTheme = new CustomTheme(themeId, packageName);
         am.updateConfiguration(currentConfig);
     }
 
     public static CustomTheme getAppliedTheme(Context context) {
         ActivityManager am = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
         Configuration config = am.getConfiguration();
-        return (config.customTheme != null ? config.customTheme :
-                CustomTheme.getBootTheme(context.getContentResolver()));
+        return (config.customTheme != null ? config.customTheme : CustomTheme.getBootTheme());
     }
 
-    public static int compareTheme(ThemeItem item, PackageInfo pi, LegacyThemeInfo ti) {
+    public static int compareTheme(ThemeItem item, PackageInfo pi, ThemeInfo ti) {
         int cmp = item.getPackageName().compareTo(pi.packageName);
         if (cmp != 0) {
             return cmp;
@@ -194,25 +187,13 @@ public class ThemeUtilities {
         return item.getThemeId().compareTo(ti.themeId);
     }
 
-    public static boolean themeEquals(PackageInfo pi, LegacyThemeInfo ti, CustomTheme current) {
+    public static boolean themeEquals(PackageInfo pi, ThemeInfo ti, CustomTheme current) {
         if (!pi.packageName.equals(current.getThemePackageName())) {
             return false;
         }
-        if (!ti.themeId.equals(current.getThemePackageName())) {
+        if (!ti.themeId.equals(current.getThemeId())) {
             return false;
         }
         return true;
-    }
-
-    public static List<PackageInfo> getInstalledThemePackages(Context context) {
-        // Returns a list of theme APKs.
-        ArrayList<PackageInfo> finalList = new ArrayList<PackageInfo>();
-        PackageManager pm = context.getPackageManager();
-        for (PackageInfo pi : pm.getInstalledPackages(0)) {
-            if (pi != null && pi.isThemeApk) {
-                finalList.add(pi);
-            }
-        }
-        return finalList;
     }
 }

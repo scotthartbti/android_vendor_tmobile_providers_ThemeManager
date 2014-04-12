@@ -119,7 +119,7 @@ public class PackageResourcesProvider extends ContentProvider {
         }
 
         return createResourcesForTheme(key,
-                pi.applicationInfo.publicSourceDir, pi.applicationInfo.sourceDir);
+                pi.applicationInfo.publicSourceDir, pi.getLockedZipFilePath());
     }
 
     private synchronized Resources createResourcesForTheme(final PackageKey key,

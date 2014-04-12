@@ -54,6 +54,8 @@ public class ChangeThemeReceiver extends BroadcastReceiver {
                     intent.getType() == null ||
                     ThemeColumns.CONTENT_ITEM_TYPE.equals(intent.getType())) {
                 ThemeUtilities.applyTheme(context, item, intent);
+            } else if (ThemeColumns.STYLE_CONTENT_ITEM_TYPE.equals(intent.getType())) {
+                ThemeUtilities.applyStyle(context, item);
             } else {
                 Log.w(Constants.TAG,
                         "Ignoring unknown change theme request (but we aborted it, sorry)...");

@@ -40,8 +40,8 @@ public class ThemePackageReceiver extends BroadcastReceiver {
                 if (action.equals(Intent.ACTION_PACKAGE_ADDED)) {
                     PackageInfo pi = context.getPackageManager().getPackageInfo(pkg, 0);
                     if (isThemeFromPackageApplied(context, pkg) &&
-                            pi.legacyThemeInfos != null && pi.legacyThemeInfos.length > 0) {
-                        ThemeUtilities.updateConfiguration(context, pi, pi.legacyThemeInfos[0]);
+                            pi.themeInfos != null && pi.themeInfos.length > 0) {
+                        ThemeUtilities.updateConfiguration(context, pi, pi.themeInfos[0]);
                     }
                 }
             } else if (action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
